@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,8 +14,44 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Email gönderme - Resend API kullanılabilir
-    // Şimdilik sadece log yapıyoruz, Resend API key eklendikten sonra aktif olacak
+    // Email gönderme
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY)
+        await resend.emails.send({
+          from: 'onboarding@resend.dev',
+          to: 'gamzeyuceeer@gmail.com',
+          replyTo: email,
+          subject: `İletişim Formu: ${subject}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #9333ea; border-bottom: 2px solid #ec4899; padding-bottom: 10px;">
+                Yeni İletişim Formu Mesajı
+              </h2>
+              <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                <p style="margin: 10px 0;"><strong style="color: #6b7280;">Ad Soyad:</strong> <span style="color: #111827;">${name}</span></p>
+                <p style="margin: 10px 0;"><strong style="color: #6b7280;">Email:</strong> <span style="color: #111827;">${email}</span></p>
+                <p style="margin: 10px 0;"><strong style="color: #6b7280;">Telefon:</strong> <span style="color: #111827;">${phone || 'Belirtilmemiş'}</span></p>
+                <p style="margin: 10px 0;"><strong style="color: #6b7280;">Konu:</strong> <span style="color: #111827;">${subject}</span></p>
+              </div>
+              <div style="margin-top: 20px; padding: 20px; background-color: #ffffff; border-left: 4px solid #9333ea;">
+                <p style="margin: 0 0 10px 0;"><strong style="color: #6b7280;">Mesaj:</strong></p>
+                <p style="color: #111827; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+              </div>
+              <p style="margin-top: 20px; color: #6b7280; font-size: 12px;">
+                Bu mesaj web sitenizdeki iletişim formundan gönderilmiştir.
+              </p>
+            </div>
+          `,
+        })
+      } catch (emailError) {
+        console.error('Resend email error:', emailError)
+        // Email gönderme hatası olsa bile form submission'ı başarılı sayıyoruz
+        // Çünkü log'da kayıt var
+      }
+    }
+
+    // Log kaydı
     console.log('Contact Form Submission:', {
       name,
       email,
@@ -23,23 +60,6 @@ export async function POST(request: NextRequest) {
       message,
       timestamp: new Date().toISOString()
     })
-
-    // TODO: Resend API ile email gönderme
-    // const resend = new Resend(process.env.RESEND_API_KEY)
-    // await resend.emails.send({
-    //   from: 'onboarding@resend.dev',
-    //   to: 'gamzeyuceeer@gmail.com',
-    //   subject: `İletişim Formu: ${subject}`,
-    //   html: `
-    //     <h2>Yeni İletişim Formu Mesajı</h2>
-    //     <p><strong>Ad Soyad:</strong> ${name}</p>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Telefon:</strong> ${phone || 'Belirtilmemiş'}</p>
-    //     <p><strong>Konu:</strong> ${subject}</p>
-    //     <p><strong>Mesaj:</strong></p>
-    //     <p>${message}</p>
-    //   `
-    // })
 
     return NextResponse.json(
       { 
