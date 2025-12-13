@@ -73,7 +73,7 @@ export default function Contact() {
         </svg>
       ),
       title: 'Email',
-      content: 'gamzeyuceer@gmail.com',
+      content: 'gamzeyuceeer@gmail.com',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
