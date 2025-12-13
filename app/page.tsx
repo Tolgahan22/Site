@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -75,35 +76,57 @@ export default function Home() {
           <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className={`relative z-10 max-w-7xl mx-auto px-4 text-center text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6 animate-fade-in">
-            <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-purple-200 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-              10+ Yıllık Deneyim
-            </span>
-          </div>
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent animate-slide-up">
-            Gamze Yüceer
-        </h1>
-          <p className="text-2xl md:text-4xl mb-4 text-purple-100 font-light animate-slide-up animation-delay-200">
-            Balıkesir/Körfez Bölgesinde
-          </p>
-          <p className="text-xl md:text-2xl mb-12 text-purple-200/80 max-w-3xl mx-auto animate-slide-up animation-delay-400">
-            Gayrimenkul Yatırım Danışmanlığı
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in animation-delay-600">
-            <Link
-              href="/services"
-              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
-            >
-              <span className="relative z-10">Hizmetlerimiz</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white/10 backdrop-blur-lg text-white rounded-full border-2 border-white/30 font-semibold text-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl"
-            >
-              İletişim
-            </Link>
+        <div className={`relative z-10 max-w-7xl mx-auto px-4 text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            {/* Profile Photo */}
+            <div className="flex-shrink-0 animate-scale-in">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 rounded-full blur-2xl opacity-50 animate-pulse"></div>
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl ring-4 ring-purple-500/50">
+                  <Image 
+                    src="/profile.jpg" 
+                    alt="Gamze Yüceer" 
+                    width={256}
+                    height={256}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Text Content */}
+            <div className="text-center lg:text-left flex-1">
+              <div className="mb-6 animate-fade-in">
+                <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-purple-200 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  10+ Yıllık Deneyim
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent animate-slide-up">
+                Gamze Yüceer
+              </h1>
+              <p className="text-xl md:text-3xl lg:text-4xl mb-4 text-purple-100 font-light animate-slide-up animation-delay-200">
+                Balıkesir/Körfez Bölgesinde
+              </p>
+              <p className="text-lg md:text-xl lg:text-2xl mb-12 text-purple-200/80 max-w-3xl mx-auto lg:mx-0 animate-slide-up animation-delay-400">
+                Gayrimenkul Yatırım Danışmanlığı
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-scale-in animation-delay-600">
+                <Link
+                  href="/services"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
+                >
+                  <span className="relative z-10">Hizmetlerimiz</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 bg-white/10 backdrop-blur-lg text-white rounded-full border-2 border-white/30 font-semibold text-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-xl"
+                >
+                  İletişim
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
