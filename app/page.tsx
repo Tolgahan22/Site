@@ -228,40 +228,123 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'Gayrimenkul Değerleme Uzmanlığı',
-                institution: 'Türkiye Değerleme Uzmanları Derneği',
-                year: '2020',
-                icon: '📚'
-              },
-              {
-                title: 'Emlak Danışmanlığı Sertifikası',
-                institution: 'Türkiye Emlakçılar Derneği',
-                year: '2018',
-                icon: '🎓'
-              },
-              {
-                title: 'Lüks Konut Pazarlama',
-                institution: 'Uluslararası Emlak Akademisi',
-                year: '2021',
-                icon: '🏆'
-              },
-              {
-                title: 'Hukuki Süreçler ve Sözleşmeler',
-                institution: 'Baro Eğitim Merkezi',
-                year: '2019',
-                icon: '⚖️'
-              },
-              {
-                title: 'Dijital Pazarlama ve Emlak',
-                institution: 'Emlak Teknolojileri Enstitüsü',
-                year: '2022',
+                title: 'Dijital Pazarlama Uzmanlığı Eğitimi',
+                institution: 'İstanbul Enstitüsü',
+                year: 'Şubat 2020',
+                certificate: 'Sertifika No: 20200600184',
                 icon: '💻'
               },
               {
-                title: 'Müşteri İlişkileri Yönetimi',
-                institution: 'Profesyonel Gelişim Akademisi',
-                year: '2023',
-                icon: '🤝'
+                title: 'İçerik Editörlüğü Sertifikası',
+                institution: 'İstanbul Enstitüsü',
+                year: 'Şubat 2020',
+                certificate: 'Sertifika No: 20202660135',
+                icon: '✍️'
+              },
+              {
+                title: 'SEO Eğitimi Sertifikası',
+                institution: 'İstanbul Enstitüsü',
+                year: 'Mart 2020',
+                certificate: 'Sertifika No: 30503860061',
+                icon: '🔍'
+              },
+              {
+                title: 'Satış Yönetimi Eğitimi Sertifikası',
+                institution: 'İstanbul Enstitüsü',
+                year: 'Mayıs 2020',
+                certificate: 'Sertifika No: 50402680243',
+                icon: '📊'
+              },
+              {
+                title: 'Yapay Zeka Eğitimi',
+                institution: 'Gayrimenkuldiji - Toros Cumhur',
+                year: '',
+                certificate: '',
+                icon: '🤖'
+              },
+              {
+                title: 'Sosyal Medya Eğitimi',
+                institution: 'Gayrimenkuldiji - Ekrem Kutsal',
+                year: '',
+                certificate: '',
+                icon: '📱'
+              },
+              {
+                title: 'Gayrimenkul Hukuku Eğitimi',
+                institution: 'Kudret Çöçü',
+                year: '',
+                certificate: '',
+                icon: '⚖️'
+              },
+              {
+                title: 'Running Start Eğitimi',
+                institution: 'Azerşin Saraç',
+                year: '2024',
+                certificate: '',
+                icon: '🚀'
+              },
+              {
+                title: 'AMP Eğitimi',
+                institution: 'Coldwell Banker',
+                year: '2019',
+                certificate: '',
+                icon: '🏢'
+              },
+              {
+                title: 'Focus Eğitimi',
+                institution: 'Master Türk',
+                year: '2020',
+                certificate: '',
+                icon: '🎯'
+              },
+              {
+                title: 'Kişisel Markalama Eğitimi',
+                institution: 'Gayrimenkuldiji - Ekrem Kutsal',
+                year: '2025',
+                certificate: '',
+                icon: '⭐'
+              },
+              {
+                title: 'İmar Yönetmeliği ve Güncel İmar Planlama Eğitimi',
+                institution: 'Akademik Talks - Naime Özcan',
+                year: '2024',
+                certificate: '',
+                icon: '🏗️'
+              },
+              {
+                title: 'Meta Eğitimi',
+                institution: 'Gayrimenkuldiji',
+                year: '',
+                certificate: '',
+                icon: '🌐'
+              },
+              {
+                title: 'Power Start Eğitimi',
+                institution: 'Remax',
+                year: '2019',
+                certificate: '',
+                icon: '💪'
+              },
+              {
+                title: 'Gayrimenkul Danışmanı Gelişim Programı Eğitimci Eğitimi',
+                institution: 'Power Camp',
+                year: '',
+                certificate: '',
+                icon: '🎓'
+              },
+              {
+                title: 'Dijital Pazarlama ve İçerik Yönetimi Okulu',
+                institution: '',
+                year: '',
+                certificate: '',
+                icon: '📚'
+              },
+              {
+                title: 'Gayrimenkul Hukuku Eğitimi',
+                institution: 'Nova Türkiye Akademi',
+                year: '2024',
+                certificate: '',
+                icon: '⚖️'
               }
             ].map((education, index) => (
               <div
@@ -270,8 +353,15 @@ export default function Home() {
               >
                 <div className="text-5xl mb-4">{education.icon}</div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900">{education.title}</h3>
-                <p className="text-gray-600 mb-2">{education.institution}</p>
-                <p className="text-sm text-purple-600 font-semibold">{education.year}</p>
+                {education.institution && (
+                  <p className="text-gray-600 mb-2">{education.institution}</p>
+                )}
+                {education.year && (
+                  <p className="text-sm text-purple-600 font-semibold mb-1">{education.year}</p>
+                )}
+                {education.certificate && (
+                  <p className="text-xs text-gray-500 font-mono">{education.certificate}</p>
+                )}
               </div>
             ))}
           </div>
