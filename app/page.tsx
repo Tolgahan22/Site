@@ -321,7 +321,7 @@ export default function Home() {
                 icon: '🎯'
               },
               {
-                title: 'Kişisel Markalama Eğitimi',
+                title: 'Kişisel Markalaşma Eğitimi',
                 institution: 'Gayrimenkuldiji - Ekrem Kutsal',
                 year: '2025',
                 certificate: '',
