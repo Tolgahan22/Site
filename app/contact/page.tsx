@@ -44,7 +44,7 @@ export default function Contact() {
         </svg>
       ),
       title: 'Email',
-      content: 'info@gamzeyuceer.com',
+      content: 'gamzeyuceer@gmail.com',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
@@ -54,7 +54,7 @@ export default function Contact() {
         </svg>
       ),
       title: 'Telefon',
-      content: '+90 (XXX) XXX XX XX',
+      content: '0544 403 00 04',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
@@ -173,7 +173,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                    placeholder="+90 (XXX) XXX XX XX"
+                    placeholder="0544 403 00 04"
                   />
                 </div>
 
